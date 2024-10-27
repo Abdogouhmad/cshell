@@ -1,0 +1,30 @@
+[package]
+name = "cshell"
+description = "simple rust cli tool that meant to change your linux shell"
+authors = ["Abdogouhmad <gouhmad@hotmail.com>"]
+version = "0.1.0"
+edition = "2021"
+readme = "README.md"
+repository = "https://github.com/Abdogouhmad/cshell"
+categories = ["cli", "shell", "linux"]
+keywords = ["change", "shell", "linux", "cli"]
+
+# [workspace]
+# members = ["macros"]
+
+# [lib]
+# name = "cslib"
+# path = "src/lib.rs"
+# doc = true
+# proc-macro = false
+# crate-type = ["lib"] 
+
+[profile.release]
+lto = true          # Enable Link-Time Optimization
+opt-level = "z"     # Optimize for size
+codegen-units = 1   # Minimize binary size (slower compile times)
+strip = "symbols"   # Remove symbol information
+[dependencies]
+clap = { version = "4.5.20", features = ["derive"] }
+log = "0.4.22"
+simplelog = "0.12.2"
