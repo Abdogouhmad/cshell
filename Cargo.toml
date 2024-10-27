@@ -9,22 +9,18 @@ repository = "https://github.com/Abdogouhmad/cshell"
 categories = ["cli", "shell", "linux"]
 keywords = ["change", "shell", "linux", "cli"]
 
-# [workspace]
-# members = ["macros"]
-
-# [lib]
-# name = "cslib"
-# path = "src/lib.rs"
-# doc = true
-# proc-macro = false
-# crate-type = ["lib"] 
+[workspace]
+members = ["macros"]
 
 [profile.release]
 lto = true          # Enable Link-Time Optimization
 opt-level = "z"     # Optimize for size
 codegen-units = 1   # Minimize binary size (slower compile times)
 strip = "symbols"   # Remove symbol information
+
 [dependencies]
+csmacros = { path = "./macros" }  # Corrected path
 clap = { version = "4.5.20", features = ["derive"] }
 log = "0.4.22"
 simplelog = "0.12.2"
+

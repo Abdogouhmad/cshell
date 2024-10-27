@@ -1,4 +1,5 @@
 use clap::Parser;
+use csmacros::cmd;
 use log::{error, info, Level, LevelFilter};
 use simplelog::{Color, ColorChoice, ConfigBuilder, TermLogger, TerminalMode};
 use std::process::{exit, Command};
@@ -114,4 +115,6 @@ fn main() {
     } else {
         args.change_shell();
     }
+
+    // cmd!("Hello", "cool");
 }
