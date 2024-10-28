@@ -46,24 +46,12 @@ impl Cshell {
         };
 
         info!("Switching to shell: {}", shell_name);
-
-        // Attempt to change the shell using `chsh`
-        let status = Command::new("chsh").arg("-s").arg(shell_path).status();
-
-        match status {
-            Ok(status) if status.success() => {
-                info!("Shell successfully changed to {}.", shell_name);
-                info!("Please log out and log back in to apply the changes.");
-            }
-            Ok(_) => {
-                error!("Failed to change shell: Permission denied or invalid shell.");
-                exit(1);
-            }
-            Err(e) => {
-                error!("Error executing command: {}", e);
-                exit(1);
-            }
-        }
+        // run the command
+        cmd!(
+            "chsh", "-s"; path_shell: shell_path;
+            success: format!("Shell successfully changed to {}. Please log out and log back in to apply the changes.", shell_name),
+            fail: "Failed to change shell: Permission denied or invalid shell."
+        );
     }
 
     /// Runs a tutorial if `tutor` mode is active.
@@ -115,6 +103,4 @@ fn main() {
     } else {
         args.change_shell();
     }
-
-    // cmd!("Hello", "cool");
 }

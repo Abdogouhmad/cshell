@@ -112,6 +112,7 @@ name = "csmacros"
 version = "0.1.0"
 dependencies = [
  "cshell",
+ "log",
 ]
 
 [[package]]
