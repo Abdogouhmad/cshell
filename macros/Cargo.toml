@@ -1,5 +1,5 @@
 [package]
-name = "cshell_macros"
+name = "csmacros"
 description = "a support macros for cshell"
 authors = ["Abdogouhmad <gouhmad@hotmail.com>"]
 version = "0.1.0"
@@ -10,9 +10,12 @@ categories = ["cli", "shell", "linux"]
 keywords = ["change", "shell", "linux", "cli"]
 
 # [lib]
-# proc-macro = true
+# # proc-macro = true
 
 [dependencies]
+log = "0.4.22"
 # syn = { version = "2.0.85", features = ["full"] }
 # proc-macro2 = "1.0.89"
 # proc-macro-error2 = "2.0.1"
+[dev-dependencies]
+cshell = { path = ".." }
