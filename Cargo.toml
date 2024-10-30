@@ -2,7 +2,7 @@
 name = "cshell"
 description = "simple rust cli tool that meant to change your linux shell"
 authors = ["Abdogouhmad <gouhmad@hotmail.com>"]
-version = "0.3.0"
+version = "0.3.1"
 edition = "2021"
 readme = "README.md"
 repository = "https://github.com/Abdogouhmad/cshell"
