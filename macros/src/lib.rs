@@ -13,6 +13,7 @@
 /// - `fail: $fail_msg:expr` - The failure message to log if the command fails (e.g., due to permission issues).
 ///
 /// # Usage
+/// ```rust
 ///
 ///     let shell_name = "zsh";  // Example shell name, could be "bash", "nu", etc.
 ///
