@@ -2,7 +2,10 @@ use clap::Parser;
 use csmacros::cmd;
 use log::{error, info, Level, LevelFilter};
 use simplelog::{Color, ColorChoice, ConfigBuilder, TermLogger, TerminalMode};
-use std::process::{exit, Command};
+use std::{
+    path::Path,
+    process::{exit, Command},
+};
 
 /// `cshell` is a small, simple Rust-based CLI that allows you to change your Linux shell effortlessly.
 #[derive(Parser, Debug)]
@@ -36,9 +39,16 @@ impl Cshell {
         };
 
         let shell_path = match shell_name.as_str() {
-            "bash" => "/bin/bash",
+            "bash" => {
+                if Path::new("/bin/bash").exists() {
+                    "/bin/bash"
+                } else {
+                    "/usr/bin/bash"
+                }
+            }
             "zsh" => "/usr/bin/zsh",
             "nu" => "/usr/bin/nu",
+            "fish" => "/usr/bin/fish",
             _ => {
                 error!("Error: Unsupported shell '{}'", shell_name);
                 exit(1);
